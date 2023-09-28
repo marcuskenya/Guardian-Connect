@@ -106,7 +106,7 @@ Spacer(modifier = Modifier.height(15.dp))
 @Composable
 fun reportUI(context: Context) {
 
-    var gotohome = LocalContext.current
+
     val incidenttype = remember {
         mutableStateOf("")
     }
@@ -118,14 +118,7 @@ fun reportUI(context: Context) {
     val description = remember {
         mutableStateOf("")
     }
-    val isUploading = remember {
-        mutableStateOf(false)
-    }
-    val img : Bitmap = BitmapFactory.decodeResource(Resources.getSystem(),android.R.drawable.ic_menu_report_image)
 
-    val bitmap = remember {
-        mutableStateOf(img)
-    }
 
     Column(
 
@@ -210,42 +203,6 @@ fun reportUI(context: Context) {
         )
         Spacer(modifier = Modifier.height(10.dp))
 
-        val takepic = LocalContext.current
-        Button(onClick = {
-            val takepictureintent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            takepic.startActivity(takepictureintent )
-            isUploading.value = true
-            bitmap.value.let{ bitmap ->
-                uploadImagetoFirebase(bitmap) { success ->
-                    isUploading.value = false
-                    if(success){
-                        Toast.makeText(context,"Uploaded Successfully",Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Toast.makeText(context,"Failed to Upload",Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        },
-            colors = ButtonDefaults.buttonColors(
-                Color.Black
-            )
-            ) {
-            Text(text = "Upload Image",
-            fontSize = 30.sp,
-                fontWeight = FontWeight.Bold)
-
-        }
-        if (isUploading.value){
-            CircularProgressIndicator(
-                modifier = Modifier.padding(16.dp),
-                color = Color.Black
-            )
-        }
-
-
-
-        Spacer(modifier = Modifier.height(10.dp))
 
         Button(
             onClick = {
@@ -288,21 +245,7 @@ fun reportUI(context: Context) {
 
 }
 
-fun uploadImagetoFirebase(bitmap: Bitmap, callback: (Boolean) -> Unit) {
-    val storageRef = Firebase.storage.reference
-    val imageRef = storageRef.child("images/${bitmap}")
 
-    val baos = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos)
-    val imageData = baos.toByteArray()
-
-    imageRef.putBytes(imageData).addOnSuccessListener {
-        callback(true)
-
-    }.addOnFailureListener{
-        callback(false)
-    }
-}
 
 fun addDataToFirebase(
     incidenttype: String,

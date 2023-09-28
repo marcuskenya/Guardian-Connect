@@ -22,7 +22,7 @@ fun AppNavHost(
     viewModel: AuthViewModel,
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUTE_FORGOTPASSWORD
+    startDestination: String = ROUTE_REPORT
 ) {
     NavHost(
         modifier = modifier,

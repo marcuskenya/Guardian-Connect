@@ -4,8 +4,13 @@ import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.widget.Toast
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -14,6 +19,7 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -65,6 +71,16 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
 
         }
+//        Column (
+//            verticalArrangement = Arrangement.Center,
+//            horizontalAlignment = Alignment.CenterHorizontally
+//        ){
+//            Text(modifier = Modifier
+//                .fillMaxWidth()
+//                .wrapContentHeight()
+//                .padding(top = spacing.medium),
+//                text = "Create an account")
+//        }
 
 
         TextField(
@@ -75,7 +91,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
             label = {
                 Text(text = stringResource(id = R.string.name))
             },
-            leadingIcon = { Icon(Icons.Default.Person, contentDescription ="usernameicon" )},
+            leadingIcon = {Icon(Icons.Default.Person, contentDescription ="usernameicon" )},
 
             modifier = Modifier.constrainAs(refName) {
                 top.linkTo(refHeader.bottom, spacing.extraLarge)
@@ -140,6 +156,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
             )
         )
 
+
         Button(
             onClick = {
                 viewModel?.signup(name, email, password)
@@ -194,6 +211,8 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                         }
                     }
                 }
+
+
             }
         }
 

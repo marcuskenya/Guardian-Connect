@@ -7,7 +7,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -67,6 +70,12 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
             AuthHeader()
 
         }
+//        Spacer(modifier = Modifier.height(10.dp))
+//        Text(modifier = Modifier
+//            .fillMaxWidth()
+//            .wrapContentHeight()
+//            .padding(top = spacing.medium),
+//            text = "Hey there,Please login")
 
 
 
@@ -178,6 +187,8 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
                         }
                     }
                 }
+
+
             }
         }
 

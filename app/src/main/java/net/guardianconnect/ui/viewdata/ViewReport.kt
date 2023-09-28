@@ -39,10 +39,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
+
 import net.guardianconnect.AddDatas
 import net.guardianconnect.navigation.ROUTE_HOME
 import net.guardianconnect.navigation.ROUTE_VIEW
 import net.guardianconnect.ui.auth.AuthViewModel
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -110,12 +112,12 @@ fun ViewScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                         }
 
                     } else {
-//                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Failed to fetch data", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener {
 
-//            Toast.makeText(context, "An error occurred", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@View, "An error occurred", Toast.LENGTH_SHORT).show()
                 }
 
 

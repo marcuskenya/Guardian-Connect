@@ -148,7 +148,7 @@ fun ForgotPasswordScreen(viewModel: AuthViewModel?, navController: NavController
         }
     }
 
-        var gotologin = LocalContext.current
+
     TextButton(
         onClick = {navController.navigate(ROUTE_LOGIN)
         },

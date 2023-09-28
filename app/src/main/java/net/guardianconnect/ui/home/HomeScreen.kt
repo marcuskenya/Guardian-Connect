@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -38,8 +39,9 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(spacing.medium)
-            .padding(top = spacing.extraLarge),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(top = spacing.extraLarge)
+//            .paint(painterResource(id = R.drawable.bgimage))
+        ,horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Text(
